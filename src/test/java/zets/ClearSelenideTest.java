@@ -19,7 +19,7 @@ import static com.codeborne.selenide.logevents.SelenideLogger.addListener;
 @Owner("Zets")
 @Feature("Issue")
 @Story("Issue display")
-public class ClearSelenide {
+public class ClearSelenideTest {
 
 
     private static final String REPO = "selenide/selenide";

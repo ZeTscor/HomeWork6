@@ -18,7 +18,7 @@ import static io.qameta.allure.Allure.step;
 @Owner("Zets")
 @Feature("Issue")
 @Story("Issue display")
-public class Steps {
+public class TestStepsConcept {
     private AnnotationStep step = new AnnotationStep();
     private static final String REPO = "selenide/selenide";
     private static final String ISSUE = "Bad browser language in version 6+";
@@ -31,20 +31,18 @@ public class Steps {
     @DisplayName("Проверка наличия issue с помощью лямбда степов")
     @Test
     void gitHubTestLambdaStep() {
-        step("Открытия главной страници github", () -> {
-            open("https://github.com/");
-        });
+        step("Открытия главной страници github", () -> open("https://github.com/"));
+
         step("Поиск репозитория" + REPO, () -> {
             $(".header-search-input").click();
             $(".header-search-input").sendKeys(REPO);
             $(".header-search-input").submit();
         });
-        step("Переход в репозиторий" + REPO, () -> {
-            $(byLinkText(REPO)).click();
-        });
-        step("Открытие вкладки Issues", () -> {
-            $(byPartialLinkText("Issues")).click();
-        });
+
+        step("Переход в репозиторий" + REPO, () -> $(byLinkText(REPO)).click());
+
+        step("Открытие вкладки Issues", () -> $(byPartialLinkText("Issues")).click());
+
         step("Проверка наличия issues по названию" + ISSUE, () -> {
             $(withText(ISSUE)).shouldHave(Condition.visible);
         });
